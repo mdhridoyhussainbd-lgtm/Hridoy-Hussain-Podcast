@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hridoy Hussain Podcast</title>
+<meta name="description" content="Hridoy Hussain Podcast: real people, real conversations. Long-form Bangla conversations with founders, professionals and creators. Apply to be a guest.">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Hridoy Hussain Podcast">
+<meta property="og:description" content="Real people. Real conversations. Apply to be a guest.">
+<meta property="og:image" content="assets/images/podcast-cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Same system as the Upwork portfolio: paper, ink, the HH dot. Here the dot is the "on air" light. */
+:root {
+  --paper: #FFFFFF; --paper-2: #F3F3F3; --ink: #0E0E0E; --ink-2: #1B1B1B; --grey: #6B6B6B; --rule: #D9D9D9;
+  --live: #E5383B;          /* on-air light only */
+  --bk: #E2136E;            /* bKash pink, payment box only */
+  --font: "Montserrat", "Hind Siliguri", "Segoe UI", Arial, sans-serif;
+  --bn: "Hind Siliguri", "Montserrat", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --gutter: clamp(1rem, 4vw, 3.5rem); --max: 76rem; --ease: cubic-bezier(.2,.7,.2,1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.7 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html[lang="bn"] body { font-family: var(--bn); }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.mono { font-family: var(--mono); font-size: .74rem; letter-spacing: .03em; color: var(--grey); }
+html[lang="bn"] .mono { font-family: var(--bn); font-size: .85rem; letter-spacing: 0; }
+.guides { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.guides .wrap { height: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+.guides span { border-inline: 1px solid rgba(14,14,14,.035); }
+main, header, footer { position: relative; z-index: 1; }
+
+.btn { display: inline-flex; align-items: center; gap: .9rem; padding: .55rem .55rem .55rem 1.3rem; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font: 600 .95rem/1.2 inherit; font-family: inherit; border: 1px solid var(--ink); cursor: pointer; transition: transform .3s var(--ease); }
+.btn i { width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--paper); color: var(--ink); display: grid; place-items: center; font-style: normal; flex: none; transition: transform .3s var(--ease); }
+.btn:hover i { transform: translateX(3px); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn.ghost i { background: var(--paper-2); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; gap: 1.4rem; padding-block: .75rem; }
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font: 800 .74rem/1.2 "Montserrat", sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.brand svg { width: 1.8rem; height: 1.5rem; }
+.brand small { display: block; font-weight: 500; letter-spacing: .35em; color: var(--grey); font-size: .6rem; }
+.top nav { margin-left: auto; display: flex; gap: 1.5rem; }
+.top nav a { text-decoration: none; font-size: .88rem; color: var(--grey); }
+.top nav a:hover { color: var(--ink); }
+.lang { display: flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
+.lang button { border: 0; background: none; font: 600 .75rem/1 "Montserrat", sans-serif; padding: .45rem .7rem; border-radius: 999px; cursor: pointer; color: var(--grey); }
+.lang button[lang="bn"] { font-family: var(--bn); font-size: .85rem; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* hero */
+.hero { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.onair { display: inline-flex; align-items: center; gap: .6rem; padding: .45rem .9rem; border: 1px solid var(--rule); border-radius: 999px; margin-bottom: 1.6rem; }
+.onair b { width: .55rem; height: .55rem; border-radius: 50%; background: var(--live); animation: blink 1.6s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+.hero h1 { font: 900 clamp(2.4rem, 1.1rem + 5vw, 5.4rem)/.95 "Montserrat", sans-serif; letter-spacing: -.05em; }
+.hero h1 .dot { display: inline-block; width: .18em; height: .18em; border-radius: 50%; background: var(--ink); margin-left: .03em; }
+.hero .sub { margin-top: 1.4rem; font-size: 1.15rem; color: var(--ink-2); max-width: 36rem; }
+html[lang="bn"] .hero .sub { font-size: 1.22rem; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+.host { position: relative; margin: 0; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 50px 100px rgba(14,14,14,.28); background: var(--ink); }
+.host img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); transform: scale(1.02); }
+.host::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,14,14,.35) 0%, transparent 25%, transparent 55%, rgba(14,14,14,.92) 100%); pointer-events: none; }
+.rec { position: absolute; top: 1.1rem; left: 1.1rem; z-index: 2; display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .75rem; border-radius: 999px; background: rgba(14,14,14,.6); color: #fff; backdrop-filter: blur(6px); font-variant-numeric: tabular-nums; }
+.rec b { width: .5rem; height: .5rem; border-radius: 50%; background: var(--live); animation: blink 1.6s infinite; }
+.host figcaption { position: absolute; left: 1.4rem; right: 1.4rem; bottom: 1.3rem; z-index: 2; color: #fff; display: grid; gap: .2rem; }
+.host figcaption .mono { color: #bdbdbd; }
+.host figcaption strong { font: 900 clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem)/1.1 "Montserrat", sans-serif; letter-spacing: -.03em; }
+.eq { display: flex; align-items: flex-end; gap: 3px; height: 26px; margin-top: .6rem; }
+.eq i { flex: 1; background: #fff; border-radius: 2px; opacity: .85; animation: eq 1.1s ease-in-out infinite; height: 30%; }
+.eq i:nth-child(3n) { animation-delay: -.3s; } .eq i:nth-child(3n+1) { animation-delay: -.6s; } .eq i:nth-child(4n) { animation-duration: 1.4s; } .eq i:nth-child(5n) { animation-duration: .8s; }
+@keyframes eq { 0%, 100% { height: 18%; } 50% { height: 100%; } }
+.host-note { margin-top: 1.2rem; display: flex; align-items: center; gap: .8rem; }
+.host-note img { width: 44px; height: 44px; border-radius: 10px; }
+
+/* topics: dark band of eight tiles */
+.topics { background: var(--ink); color: var(--paper); padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+.topics-head { display: grid; gap: .8rem; margin-bottom: 2.2rem; }
+.topics-head .mono { color: #9a9a9a; }
+.topics-head h2 { font: 900 clamp(1.7rem, 1.1rem + 2.2vw, 2.8rem)/1.05 "Montserrat", sans-serif; letter-spacing: -.035em; max-width: 30rem; }
+html[lang="bn"] .topics-head h2 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; line-height: 1.25; }
+.topic-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #2c2c2c; border-left: 1px solid #2c2c2c; }
+.topic { border-right: 1px solid #2c2c2c; border-bottom: 1px solid #2c2c2c; padding: 1.4rem 1.3rem 1.6rem; display: grid; gap: .5rem; align-content: start; min-width: 0; transition: background .35s var(--ease), color .35s; }
+.topic .mono { color: #6b6b6b; }
+.topic h3 { font: 800 1.25rem/1.2 "Montserrat", sans-serif; letter-spacing: -.02em; }
+html[lang="bn"] .topic h3 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; }
+.topic p { color: #a8a8a8; font-size: .92rem; line-height: 1.5; }
+.topic:hover { background: var(--paper); color: var(--ink); }
+.topic:hover p { color: var(--ink-2); }
+@media (max-width: 900px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
+
+/* sections */
+.section { padding-block: clamp(4.5rem, 9vw, 7.5rem); border-top: 1px solid var(--rule); background: var(--paper); }
+.head { margin-bottom: clamp(2.2rem, 5vw, 3.5rem); display: grid; gap: .8rem; }
+.head h2 { font: 900 clamp(2.2rem, 1.3rem + 3.6vw, 4.4rem)/1 "Montserrat", sans-serif; letter-spacing: -.045em; }
+html[lang="bn"] .head h2 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; line-height: 1.2; }
+.head p { color: var(--ink-2); max-width: 40rem; font-size: 1.05rem; }
+
+/* episodes */
+.eps-head { grid-template-columns: 1fr auto; align-items: end; }
+.eps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.ep { text-decoration: none; display: grid; gap: .7rem; align-content: start; min-width: 0; }
+.ep .thumb { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: var(--ink); }
+.ep .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.ep:hover .thumb img { transform: scale(1.04); }
+.ep .thumb b { position: absolute; left: .8rem; bottom: .8rem; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--paper); color: var(--ink); display: grid; place-items: center; font-size: .8rem; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+.ep .new { position: absolute; top: .8rem; left: .8rem; background: var(--live); color: #fff; font: 700 .65rem/1 "Montserrat", sans-serif; letter-spacing: .1em; padding: .35rem .55rem; border-radius: 999px; }
+.ep h3 { font: 700 1.08rem/1.4 var(--bn); }
+.ep:first-child { grid-column: span 2; grid-row: span 2; }
+.ep:first-child h3 { font-size: 1.45rem; }
+/* how it works */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); counter-reset: s; }
+.steps li { list-style: none; padding: 1.5rem 1.2rem 0 0; min-width: 0; }
+.steps li + li { padding-left: 1.2rem; border-left: 1px solid var(--rule); }
+.steps h3 { font-size: 1.2rem; font-weight: 800; margin: .5rem 0; }
+html[lang="bn"] .steps h3 { font-weight: 700; }
+.steps p { color: var(--ink-2); font-size: .95rem; }
+ol.steps { padding: 0; margin: 0; }
+
+/* two paths */
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.path { border: 1px solid var(--rule); border-radius: 22px; padding: clamp(1.6rem, 3vw, 2.4rem); display: flex; flex-direction: column; gap: .9rem; }
+.path.dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.path.dark .mono, .path.dark p, .path.dark li { color: #cfcfcf; }
+.path h3 { font: 900 clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem)/1.1 "Montserrat", sans-serif; letter-spacing: -.03em; }
+html[lang="bn"] .path h3 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; }
+.path .price { font: 900 2.6rem/1 "Montserrat", sans-serif; letter-spacing: -.04em; }
+.path ul { list-style: none; padding: 1rem 0 0; margin: 0; border-top: 1px solid var(--rule); display: grid; gap: .5rem; }
+.path.dark ul { border-color: #333; }
+.path li::before { content: ""; display: inline-block; width: .4rem; height: .4rem; border-radius: 50%; background: currentColor; margin-right: .7rem; vertical-align: .15em; }
+.path .btn { margin-top: auto; align-self: flex-start; }
+.path.dark .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.path.dark .btn i { background: var(--ink); color: var(--paper); }
+
+/* application wizard */
+.apply { background: var(--paper-2); }
+.wizard { max-width: 48rem; margin: 0 auto; background: var(--paper); border: 1px solid var(--rule); border-radius: 26px; padding: clamp(1.25rem, 4vw, 2.6rem); }
+.bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; margin-bottom: 1.6rem; }
+.bar span { height: 4px; border-radius: 2px; background: var(--rule); transition: background .3s; }
+.bar span.on { background: var(--ink); }
+.stepname { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem; }
+.pane { display: none; gap: 1.1rem; }
+.pane.on { display: grid; }
+.pane h3 { font: 800 1.6rem/1.2 "Montserrat", sans-serif; letter-spacing: -.02em; }
+html[lang="bn"] .pane h3 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; }
+.pane > p.hint { color: var(--ink-2); margin-top: -.4rem; }
+.choice { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+.choice label { position: relative; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; inset: 0; }
+.choice .card { display: grid; gap: .3rem; border: 1.5px solid var(--rule); border-radius: 16px; padding: 1.1rem 1.2rem; height: 100%; transition: border-color .2s, background .2s; }
+.choice .card b { font-size: 1.05rem; }
+.choice .card span { font-size: .88rem; color: var(--grey); }
+.choice input:checked + .card { border-color: var(--ink); background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--ink); }
+.choice input:focus-visible + .card { outline: 2px solid var(--ink); outline-offset: 2px; }
+.fld { display: grid; gap: .35rem; min-width: 0; }
+.fld > span { font-size: .85rem; font-weight: 600; }
+.fld > span em { font-style: normal; color: var(--grey); font-weight: 400; }
+.fld input, .fld select, .fld textarea { width: 100%; font: 400 .95rem/1.45 inherit; font-family: inherit; color: var(--ink); background: var(--paper-2); border: 1.5px solid transparent; border-radius: 12px; padding: .8rem .95rem; }
+.fld textarea { resize: vertical; min-height: 5.5rem; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { outline: none; border-color: var(--ink); background: var(--paper); }
+.fld.bad input, .fld.bad textarea, .fld.bad select { border-color: #B3261E; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.check { display: flex; gap: .7rem; align-items: flex-start; font-size: .92rem; color: var(--ink-2); cursor: pointer; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: .2rem; accent-color: var(--ink); flex: none; }
+.bkash { border: 1.5px solid var(--bk); border-radius: 18px; padding: 1.3rem; display: grid; gap: .9rem; background: #FFF6FA; }
+.bkash .lbl { color: var(--bk); font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+html[lang="bn"] .bkash .lbl { letter-spacing: 0; font-size: .9rem; }
+.bkash .num { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.bkash .num strong { font: 800 1.6rem/1 "Montserrat", sans-serif; letter-spacing: .02em; font-variant-numeric: tabular-nums; user-select: all; }
+.bkash .copy { border: 1px solid var(--bk); background: #fff; color: var(--bk); border-radius: 999px; padding: .35rem .8rem; font: 600 .8rem inherit; font-family: inherit; cursor: pointer; }
+.bkash ol { margin: 0; padding-left: 1.2rem; color: var(--ink-2); font-size: .92rem; display: grid; gap: .2rem; }
+.coupon-row { display: flex; gap: .6rem; }
+.coupon-row input { flex: 1; text-transform: uppercase; letter-spacing: .08em; }
+.msg { font-size: .9rem; font-weight: 600; }
+.msg.ok { color: #1E7A46; }
+.msg.err { color: #B3261E; }
+.nav-btns { display: flex; justify-content: space-between; gap: .6rem; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+.review { background: var(--paper-2); border-radius: 14px; padding: 1rem 1.2rem; font-size: .88rem; white-space: pre-wrap; word-break: break-word; max-height: 20rem; overflow: auto; font-family: var(--mono); }
+.done { text-align: center; display: none; gap: 1rem; justify-items: center; padding-block: 1rem; }
+.done.on { display: grid; }
+.done .big { width: 72px; height: 72px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-size: 1.8rem; }
+.wa { background: #25D366; border-color: #25D366; color: #062b14; }
+.wa i { background: #062b14; color: #25D366; }
+.saved { text-align: right; margin-top: .6rem; }
+
+/* faq */
+.faq { max-width: 52rem; display: grid; }
+.faq details { border-top: 1px solid var(--rule); padding-block: 1.2rem; }
+.faq details:last-child { border-bottom: 1px solid var(--rule); }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::after { content: "+"; font-weight: 400; font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq p { margin-top: .7rem; color: var(--ink-2); max-width: 44rem; }
+
+footer { border-top: 1px solid var(--rule); padding-block: 1.6rem calc(1.6rem + env(safe-area-inset-bottom, 0px)); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+@media (max-width: 900px) {
+  .hero-grid, .paths { grid-template-columns: 1fr; }
+  .eps { grid-template-columns: 1fr 1fr; } .ep:first-child { grid-row: auto; }
+  .eps-head { grid-template-columns: 1fr; }
+  .host { max-width: 420px; width: 100%; margin: 0 auto; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .top nav { display: none; }
+  .lang { margin-left: auto; }
+}
+@media (max-width: 600px) {
+  .eps { grid-template-columns: 1fr; } .ep:first-child { grid-column: auto; }
+  .steps, .row2, .choice { grid-template-columns: 1fr; }
+  .steps li + li { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); }
+  .brand span.t { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><mask id="hh-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="580" height="485"><rect width="580" height="485" fill="#fff"/><path d="M152 8 H272 V47 C272 205 570 200 570 375 V473 H450 V408 C450 290 152 300 152 150 Z" fill="none" stroke="#000" stroke-width="12"/></mask></defs>
+  <symbol id="hh" viewBox="4 2 572 478"><circle cx="68" cy="67" r="58" fill="currentColor"/><g mask="url(#hh-gap)"><rect x="152" y="8" width="120" height="465" fill="currentColor"/><rect x="450" y="8" width="120" height="465" fill="currentColor"/></g><path d="M152 8 H272 V47 C272 205 570 200 570 375 V473 H450 V408 C450 290 152 300 152 150 Z" fill="currentColor"/></symbol>
+</svg>
+<div class="guides" aria-hidden="true"><div class="wrap"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#hh"/></svg><span class="t">Hridoy Hussain<small>Podcast</small></span></a>
+    <nav aria-label="Main">
+      <a href="#episodes" data-t="nav_eps">Episodes</a>
+      <a href="#how" data-t="nav_how">How it works</a>
+      <a href="#apply" data-t="nav_apply">Be a guest</a>
+      <a href="#faq" data-t="nav_faq">FAQ</a>
+      <a href="terms.html" data-t="nav_terms">Terms</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="bn" lang="bn" aria-pressed="true">বাংলা</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="onair mono"><b aria-hidden="true"></b><span data-t="hero_badge">Now booking guests</span></p>
+        <h1>Real people.<br>Real <span style="white-space:nowrap">conversations<span class="dot" aria-hidden="true"></span></span></h1>
+        <p class="sub" data-t="hero_sub">Long-form conversations with founders, professionals, freelancers and creators about how they think, build, struggle and grow.</p>
+        <div class="actions">
+          <a class="btn" href="#apply"><span data-t="cta_apply">Apply to be a guest</span> <i aria-hidden="true">→</i></a>
+          <a class="btn ghost" href="https://www.youtube.com/@hridoyhussaintalks" target="_blank" rel="noopener"><span data-t="cta_watch">Watch on YouTube</span> <i aria-hidden="true">↗</i></a>
+        </div>
+        <div class="host-note"><img src="assets/images/podcast-cover.jpg" alt="" width="3000" height="3000"><span class="mono" data-t="host_note">New episodes on YouTube, Facebook, Instagram &amp; TikTok</span></div>
+      </div>
+      <figure class="host">
+        <img src="assets/images/hridoy-hero.jpg" alt="Hridoy Hussain, host of the Hridoy Hussain Podcast, at the microphone" width="819" height="1024" fetchpriority="high">
+        <span class="rec mono" aria-hidden="true"><b></b>REC <span id="tc">00:00:00</span></span>
+        <figcaption>
+          <span class="mono" data-t="host_k">Your host</span>
+          <strong>Hridoy Hussain</strong>
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="topics" aria-labelledby="topics-t">
+    <div class="wrap">
+      <div class="topics-head"><span class="mono" data-t="tp_k">What we talk about</span><h2 id="topics-t" data-t="tp_t">Eight topics. One honest conversation.</h2></div>
+      <div class="topic-grid"><article class="topic"><span class="mono">01</span><h3 data-t="tp0">Business</h3><p data-t="tq0">“How did you get your first customer?”</p></article><article class="topic"><span class="mono">02</span><h3 data-t="tp1">Career</h3><p data-t="tq1">“What would you tell your 22-year-old self?”</p></article><article class="topic"><span class="mono">03</span><h3 data-t="tp2">Money</h3><p data-t="tq2">“What did your first big money mistake teach you?”</p></article><article class="topic"><span class="mono">04</span><h3 data-t="tp3">Technology</h3><p data-t="tq3">“Which tool changed the way you work?”</p></article><article class="topic"><span class="mono">05</span><h3 data-t="tp4">Health</h3><p data-t="tq4">“How do you stay well when work gets heavy?”</p></article><article class="topic"><span class="mono">06</span><h3 data-t="tp5">Creativity</h3><p data-t="tq5">“Where do your best ideas come from?”</p></article><article class="topic"><span class="mono">07</span><h3 data-t="tp6">Freelancing</h3><p data-t="tq6">“How did you land your first international client?”</p></article><article class="topic"><span class="mono">08</span><h3 data-t="tp7">Life stories</h3><p data-t="tq7">“What moment changed everything?”</p></article></div>
+    </div>
+  </section>
+
+  <!-- EPISODES -->
+  <section class="section" id="episodes">
+    <div class="wrap">
+      <div class="head eps-head"><div><span class="mono" data-t="eps_k">Latest episodes</span><h2 data-t="eps_t">Listen in.</h2></div><a class="btn ghost" href="https://www.youtube.com/@hridoyhussaintalks/videos" target="_blank" rel="noopener"><span data-t="eps_all">All episodes</span> <i aria-hidden="true">↗</i></a></div>
+      <div class="eps" id="eps">
+        <a class="ep" href="https://www.youtube.com/@hridoyhussaintalks/videos" target="_blank" rel="noopener"><span class="mono">Career</span><h3 lang="bn">গ্র্যাজুয়েশনের পর এই ৩টি ভুল একদম করবেন না! | Middle Class Career Trap &amp; Reality</h3><span class="play"><b>▶</b><span data-t="watch">Watch on YouTube</span></span></a>
+        <a class="ep" href="https://www.youtube.com/@hridoyhussaintalks/videos" target="_blank" rel="noopener"><span class="mono">Technology · Money</span><h3 lang="bn">AI, Money &amp; Future | আগামী ৫ বছরে বদলে যেতে পারে সবকিছু</h3><span class="play"><b>▶</b><span data-t="watch">Watch on YouTube</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="head"><span class="mono" data-t="how_k">How it works</span><h2 data-t="how_t">From form to episode.</h2></div>
+      <ol class="steps">
+        <li><span class="mono">01</span><h3 data-t="s1_t">Apply</h3><p data-t="s1_d">Fill in the form below. The more you share, the better your questions will be.</p></li>
+        <li><span class="mono">02</span><h3 data-t="s2_t">Review</h3><p data-t="s2_d">I read every application myself and confirm on WhatsApp.</p></li>
+        <li><span class="mono">03</span><h3 data-t="s3_t">Prepare</h3><p data-t="s3_d">I prepare questions from your answers and share the main topics before the shoot.</p></li>
+        <li><span class="mono">04</span><h3 data-t="s4_t">Record &amp; publish</h3><p data-t="s4_d">We record in the studio or online. The episode goes live on YouTube.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PATHS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head"><span class="mono" data-t="paths_k">Two ways to join</span><h2 data-t="paths_t">Invited, or featured.</h2></div>
+      <div class="paths">
+        <article class="path">
+          <span class="mono" data-t="p1_k">Invited guest</span>
+          <h3 data-t="p1_t">I reached out to you</h3>
+          <p data-t="p1_d">If I invited you, you'll have a guest code. Enter it in the form and the payment step is skipped.</p>
+          <p class="price">৳0</p>
+          <ul><li data-t="p1_l1">Free</li><li data-t="p1_l2">Full episode on YouTube</li><li data-t="p1_l3">Studio or online</li></ul>
+          <a class="btn ghost" href="#apply" data-pick="invited"><span data-t="p1_cta">I have a code</span> <i aria-hidden="true">→</i></a>
+        </article>
+        <article class="path dark">
+          <span class="mono" data-t="p2_k">Featured guest</span>
+          <h3 data-t="p2_t">You'd like to be on the show</h3>
+          <p data-t="p2_d">Share your story or work with the podcast audience. Paid by bKash, and labelled as a paid feature on YouTube.</p>
+          <p class="price">৳10,000</p>
+          <ul><li data-t="p2_l1">Full episode on YouTube</li><li data-t="p2_l2">Studio or online</li><li data-t="p2_l3">৳8,000 refunded if not selected or not published</li></ul>
+          <a class="btn" href="#apply" data-pick="paid"><span data-t="p2_cta">Apply as featured guest</span> <i aria-hidden="true">→</i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="section apply" id="apply">
+    <div class="wrap">
+      <div class="head" style="text-align:center;justify-items:center"><span class="mono" data-t="ap_k">Guest application</span><h2 data-t="ap_t">Tell me your story.</h2><p data-t="ap_d">About 10 minutes. Your answers help me prepare good questions, and your progress is saved on this device.</p></div>
+
+      <form class="wizard" id="wiz" novalidate>
+        <div class="bar" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <div class="stepname mono"><span id="stepLabel">Step 1 of 5</span><span id="stepTitle"></span></div>
+
+        <!-- 1: guest type + payment -->
+        <div class="pane on" data-pane="0" data-title="t_type">
+          <h3 data-t="q_type">How are you joining?</h3>
+          <div class="choice">
+            <label><input type="radio" name="guest_type" value="invited" id="gt-inv"><span class="card"><b data-t="opt_inv">I was invited</b><span data-t="opt_inv_d">I have a guest code</span></span></label>
+            <label><input type="radio" name="guest_type" value="paid" id="gt-paid"><span class="card"><b data-t="opt_paid">Featured guest · ৳10,000</b><span data-t="opt_paid_d">Pay with bKash</span></span></label>
+          </div>
+
+          <div id="box-inv" hidden>
+            <label class="fld"><span data-t="f_code">Guest code</span>
+              <div class="coupon-row"><input id="code" name="guest_code" autocomplete="off" data-tp="ph_code" placeholder="Enter your code"><button type="button" class="btn ghost" id="applyCode" style="padding:.55rem 1.1rem" data-t="apply">Apply</button></div></label>
+            <p class="msg" id="codeMsg" role="status"></p>
+          </div>
+
+          <div id="box-paid" hidden>
+            <div class="bkash">
+              <span class="lbl" data-t="bk_lbl">bKash · Send Money</span>
+              <div class="num"><strong id="bkNum">01751210179</strong><button type="button" class="copy" id="copyBk" data-t="copy">Copy</button><span class="mono" data-t="bk_amt">Amount: ৳10,000</span></div>
+              <ol>
+                <li data-t="bk_1">Open bKash and choose Send Money.</li>
+                <li data-t="bk_2">Send ৳10,000 to the number above (personal number, Send Money only).</li>
+                <li data-t="bk_3">Copy the Transaction ID (TrxID) from the confirmation message.</li>
+                <li data-t="bk_4">Enter it below with the number you paid from.</li>
+              </ol>
+            </div>
+            <div class="row2">
+              <label class="fld"><span data-t="f_bkfrom">Your bKash number</span><input id="bk_from" name="bkash_from" inputmode="tel" placeholder="01XXXXXXXXX"></label>
+              <label class="fld"><span data-t="f_trx">Transaction ID (TrxID)</span><input id="bk_trx" name="bkash_trxid" autocomplete="off" placeholder="e.g. 9A1B2C3D4E" style="text-transform:uppercase"></label>
+            </div>
+            <label class="check"><input type="checkbox" id="agreeRefund" name="agree_refund" value="yes"><span data-t="agree_refund">I understand: if I'm not selected or the episode isn't published, ৳8,000 is refunded and ৳2,000 is kept as a processing fee.</span></label>
+            <label class="check"><input type="checkbox" id="agreePaid" name="agree_paid_label" value="yes"><span data-t="agree_paid">I understand the episode will be labelled as a paid feature, and the conversation stays honest and unscripted.</span></label>
+          </div>
+        </div>
+
+        <!-- 2: about you -->
+        <div class="pane" data-pane="1" data-title="t_about">
+          <h3 data-t="q_about">About you</h3>
+          <div class="row2">
+            <label class="fld"><span data-t="f_name">Full name</span><input name="full_name" required autocomplete="name"></label>
+            <label class="fld"><span><span data-t="f_intro">How should I introduce you? </span><em data-t="f_intro_e">(one line)</em></span><input name="intro_line" data-tp="ph_intro" placeholder="e.g. Founder of ABC, doctor, freelancer"></label>
+          </div>
+          <div class="row2">
+            <label class="fld"><span data-t="f_role">Profession / role</span><input name="role" required></label>
+            <label class="fld"><span><span data-t="f_org">Organization </span><em data-t="opt">(optional)</em></span><input name="organization"></label>
+          </div>
+          <div class="row2">
+            <label class="fld"><span data-t="f_wa">WhatsApp number</span><input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="+8801XXXXXXXXX"></label>
+            <label class="fld"><span data-t="f_email">Email</span><input name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <div class="row2">
+            <label class="fld"><span data-t="f_city">City, country</span><input name="location" required data-tp="ph_city" placeholder="e.g. Sylhet, Bangladesh"></label>
+            <label class="fld"><span data-t="f_links">Facebook / LinkedIn / website</span><input name="links" placeholder="https://"></label>
+          </div>
+          <label class="fld"><span><span data-t="f_bio">Short bio </span><em data-t="f_bio_e">(3–4 lines, how you got here)</em></span><textarea name="bio" required rows="4"></textarea></label>
+          <label class="fld"><span><span data-t="f_photo">Photo link </span><em data-t="f_photo_e">(Google Drive or social, for the thumbnail, optional)</em></span><input name="photo_link" placeholder="https://"></label>
+        </div>
+
+        <!-- 3: your story -->
+        <div class="pane" data-pane="2" data-title="t_story">
+          <h3 data-t="q_story">Your story</h3>
+          <p class="hint" data-t="story_hint">These answers become my questions. Real details beat polished answers.</p>
+          <label class="fld"><span data-t="f_topic">What should this episode be about?</span><input name="episode_topic" required data-tp="ph_topic" placeholder="e.g. Building a business from Sylhet with no investment"></label>
+          <label class="fld"><span data-t="f_points">3 main points you want to share</span><textarea name="key_points" required rows="4" placeholder="1.&#10;2.&#10;3."></textarea></label>
+          <label class="fld"><span data-t="f_journey">Your journey: the hardest moment, and what changed</span><textarea name="journey" required rows="4"></textarea></label>
+          <div class="row2">
+            <label class="fld"><span data-t="f_win">Biggest achievement</span><textarea name="achievement" rows="3"></textarea></label>
+            <label class="fld"><span data-t="f_fail">A failure or lesson</span><textarea name="lesson" rows="3"></textarea></label>
+          </div>
+          <label class="fld"><span data-t="f_advice">One piece of advice for young people in Bangladesh</span><textarea name="advice" rows="3"></textarea></label>
+          <label class="fld"><span><span data-t="f_facts">Numbers or facts I should know </span><em data-t="opt">(optional)</em></span><textarea name="facts" rows="2" data-tp="ph_facts" placeholder="e.g. years in business, team size, students taught"></textarea></label>
+          <label class="fld"><span><span data-t="f_avoid">Topics you'd rather not discuss </span><em data-t="opt">(optional)</em></span><input name="avoid_topics"></label>
+          <label class="fld"><span><span data-t="f_promo">Anything you want to promote? </span><em data-t="opt">(optional)</em></span><input name="promotion" data-tp="ph_promo" placeholder="e.g. your business, course, book"></label>
+        </div>
+
+        <!-- 4: recording -->
+        <div class="pane" data-pane="3" data-title="t_rec">
+          <h3 data-t="q_rec">Recording</h3>
+          <div class="choice">
+            <label><input type="radio" name="format" value="Studio" checked><span class="card"><b data-t="opt_studio">In the studio</b><span data-t="opt_studio_d">Location shared after confirmation</span></span></label>
+            <label><input type="radio" name="format" value="Online"><span class="card"><b data-t="opt_online">Online</b><span data-t="opt_online_d">Zoom or similar, from anywhere</span></span></label>
+          </div>
+          <div class="row2">
+            <label class="fld"><span data-t="f_d1">Preferred date 1</span><input type="date" name="date_1" required></label>
+            <label class="fld"><span data-t="f_d2">Preferred date 2</span><input type="date" name="date_2"></label>
+          </div>
+          <div class="row2">
+            <label class="fld"><span data-t="f_time">Best time</span>
+              <select name="time_slot"><option value="Morning" data-t="tm_m">Morning</option><option value="Afternoon" data-t="tm_a">Afternoon</option><option value="Evening" data-t="tm_e">Evening</option><option value="Flexible" data-t="tm_f">Flexible</option></select></label>
+            <label class="fld"><span data-t="f_lang">Language</span>
+              <select name="language"><option value="Bangla">বাংলা</option><option value="Bangla + English" selected>বাংলা + English</option><option value="English">English</option></select></label>
+          </div>
+          <label class="fld"><span data-t="f_heard">How did you hear about the podcast?</span><input name="heard_from"></label>
+          <label class="check"><input type="checkbox" name="agree_publish" value="yes" required id="agreePub"><span data-t="agree_pub">I agree that the recording may be edited and published on YouTube, Facebook and other platforms of the Hridoy Hussain Podcast.</span></label>
+        </div>
+
+        <!-- 5: review -->
+        <div class="pane" data-pane="4" data-title="t_review">
+          <h3 data-t="q_review">Check and send</h3>
+          <p class="hint" data-t="review_hint">This is what will be sent. Go back to change anything.</p>
+          <pre class="review" id="review"></pre>
+          <label class="check"><input type="checkbox" name="agree_terms" value="yes" required id="agreeTerms"><span><span data-t="agree_terms">I have read and agree to the</span> <a href="terms.html" target="_blank" rel="noopener" data-t="terms_link">guest terms</a>.</span></label>
+        </div>
+
+        <div class="done" id="done">
+          <span class="big" aria-hidden="true">✓</span>
+          <h3 data-t="done_t">Application received</h3>
+          <p data-t="done_d">One last step: send it to me on WhatsApp so I can reply to you directly.</p>
+          <a class="btn wa" id="waLink" href="https://wa.me/8801302778420" target="_blank" rel="noopener"><span data-t="done_wa">Send on WhatsApp</span> <i aria-hidden="true">↗</i></a>
+          <p class="mono" id="fsNote"></p>
+        </div>
+
+        <p class="msg err" id="err" role="alert" hidden></p>
+        <div class="nav-btns" id="navBtns">
+          <button type="button" class="btn ghost" id="back" disabled><i aria-hidden="true">←</i><span data-t="back">Back</span></button>
+          <button type="button" class="btn" id="next"><span data-t="next">Next</span> <i aria-hidden="true">→</i></button>
+        </div>
+        <p class="mono saved" id="saved" aria-live="polite"></p>
+        <input type="hidden" name="_subject" value="Podcast guest application">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="head"><span class="mono">FAQ</span><h2 data-t="faq_t">Good questions.</h2></div>
+      <div class="faq">
+        <details><summary data-t="fq1">How do you confirm my bKash payment?</summary><p data-t="fa1">I check the Transaction ID against my bKash account by hand, then confirm with you on WhatsApp.</p></details>
+        <details><summary data-t="fq2">What if I'm not selected?</summary><p data-t="fa2">If your application isn't selected, or the episode isn't published, I refund ৳8,000 to the bKash number you paid from. ৳2,000 is kept as a processing fee.</p></details>
+        <details><summary data-t="fq3">Will I see the questions before the shoot?</summary><p data-t="fa3">I share the main topics before we record. The exact questions stay natural, so the conversation feels real. Topics you listed as off-limits won't come up.</p></details>
+        <details><summary data-t="fq4">Does paying guarantee a positive or scripted episode?</summary><p data-t="fa4">No. Paying covers the feature and the production. The conversation stays honest, and the episode is labelled as a paid feature on YouTube.</p></details>
+        <details><summary data-t="fq6">Who owns the episode, and can I upload it?</summary><p data-t="fa6">The Podcast owns the recording. You can share it anywhere and upload it to your own pages with credit, as long as you don't monetize it. Details are in the terms.</p></details>
+        <details><summary data-t="fq5">Studio or online, which is better?</summary><p data-t="fa5">Both work. The studio gives the best picture and sound. Online is easier if you're outside the city or abroad.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap mono">
+    <span>© <span id="year">2026</span> Hridoy Hussain Podcast</span>
+    <span>Real People · Real Conversations</span>
+    <span><a href="terms.html" data-t="nav_terms">Terms</a> · <a href="https://www.youtube.com/@hridoyhussaintalks" target="_blank" rel="noopener">YouTube ↗</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var WA = '8801302778420';
+  var FORMSPREE = 'https://formspree.io/f/mrpedjvp';
+  var CODE_HASH = 'b87b7f0b'; // FNV-1a of the guest code. Payments are still checked by hand.
+
+  /* ---------- Language: Bangla-English mix by default, full English on one click ---------- */
+  var T = {
+    nav_eps: ['Episodes', 'এপিসোড'], nav_how: ['How it works', 'কীভাবে হয়'], nav_apply: ['Be a guest', 'গেস্ট হোন'], nav_faq: ['FAQ', 'প্রশ্নোত্তর'],
+    hero_badge: ['Now booking guests', 'এখন গেস্ট নেওয়া হচ্ছে'],
+    hero_sub: ['Long-form conversations with founders, professionals, freelancers and creators about how they think, build, struggle and grow.', 'Founder, professional, freelancer আর creator-দের সাথে লম্বা আলাপ: তারা কীভাবে ভাবেন, গড়ে তোলেন, লড়াই করেন আর এগিয়ে যান।'],
+    cta_apply: ['Apply to be a guest', 'Guest হতে আবেদন করুন'], cta_watch: ['Watch on YouTube', 'YouTube-এ দেখুন'], watch: ['Watch on YouTube', 'YouTube-এ দেখুন'],
+    eps_k: ['Latest episodes', 'সাম্প্রতিক এপিসোড'], eps_t: ['Listen in.', 'শুনে দেখুন।'],
+    how_k: ['How it works', 'কীভাবে হয়'], how_t: ['From form to episode.', 'ফর্ম থেকে এপিসোড।'],
+    s1_t: ['Apply', 'আবেদন'], s1_d: ['Fill in the form below. The more you share, the better your questions will be.', 'নিচের ফর্মটা পূরণ করুন। যত বেশি শেয়ার করবেন, প্রশ্ন তত ভালো হবে।'],
+    s2_t: ['Review', 'যাচাই'], s2_d: ['I read every application myself and confirm on WhatsApp.', 'প্রতিটা আবেদন আমি নিজে পড়ি, তারপর WhatsApp-এ confirm করি।'],
+    s3_t: ['Prepare', 'প্রস্তুতি'], s3_d: ['I prepare questions from your answers and share the main topics before the shoot.', 'আপনার উত্তর থেকে প্রশ্ন সাজাই, আর shoot-এর আগে মূল topic-গুলো জানিয়ে দিই।'],
+    s4_t: ['Record & publish', 'Record আর publish'], s4_d: ['We record in the studio or online. The episode goes live on YouTube.', 'Studio-তে বা online-এ record করি, তারপর episode YouTube-এ live হয়।'],
+    paths_k: ['Two ways to join', 'যোগ দেওয়ার দুটো উপায়'], paths_t: ['Invited, or featured.', 'আমন্ত্রিত, অথবা featured।'],
+    p1_k: ['Invited guest', 'আমন্ত্রিত গেস্ট'], p1_t: ['I reached out to you', 'আমি আপনাকে আমন্ত্রণ জানিয়েছি'],
+    p1_d: ["If I invited you, you'll have a guest code. Enter it in the form and the payment step is skipped.", 'আমন্ত্রণ পেলে আপনার কাছে একটা guest code থাকবে। ফর্মে দিলে payment-এর ধাপ লাগবে না।'],
+    p1_l1: ['Free', 'ফ্রি'], p1_l2: ['Full episode on YouTube', 'YouTube-এ পূর্ণ episode'], p1_l3: ['Studio or online', 'Studio বা online'], p1_cta: ['I have a code', 'আমার code আছে'],
+    p2_k: ['Featured guest', 'Featured গেস্ট'], p2_t: ["You'd like to be on the show", 'আপনি show-তে আসতে চান'],
+    p2_d: ['Share your story or work with the podcast audience. Paid by bKash, and labelled as a paid feature on YouTube.', 'আপনার গল্প বা কাজ podcast-এর দর্শকদের সাথে শেয়ার করুন। bKash-এ payment, আর YouTube-এ paid feature হিসেবে উল্লেখ থাকবে।'],
+    p2_l1: ['Full episode on YouTube', 'YouTube-এ পূর্ণ episode'], p2_l2: ['Studio or online', 'Studio বা online'], p2_l3: ['৳8,000 refunded if not selected or not published', 'নির্বাচিত না হলে বা publish না হলে ৳৮,০০০ ফেরত'],
+    p2_cta: ['Apply as featured guest', 'Featured guest হিসেবে আবেদন'],
+    ap_k: ['Guest application', 'গেস্ট আবেদন'], ap_t: ['Tell me your story.', 'আপনার গল্পটা বলুন।'],
+    ap_d: ['About 10 minutes. Your answers help me prepare good questions, and your progress is saved on this device.', 'প্রায় ১০ মিনিট লাগবে। আপনার উত্তর থেকেই আমি প্রশ্ন সাজাব। লেখা এই device-এ save থাকবে।'],
+    t_type: ['Joining', 'যোগদান'], t_about: ['About you', 'আপনার পরিচয়'], t_story: ['Your story', 'আপনার গল্প'], t_rec: ['Recording', 'Recording'], t_review: ['Review', 'যাচাই'],
+    q_type: ['How are you joining?', 'আপনি কীভাবে যোগ দিচ্ছেন?'],
+    opt_inv: ['I was invited', 'আমাকে আমন্ত্রণ জানানো হয়েছে'], opt_inv_d: ['I have a guest code', 'আমার guest code আছে'],
+    opt_paid: ['Featured guest · ৳10,000', 'Featured guest · ৳১০,০০০'], opt_paid_d: ['Pay with bKash', 'bKash-এ payment'],
+    f_code: ['Guest code', 'Guest code'], ph_code: ['Enter your code', 'আপনার code লিখুন'], apply: ['Apply', 'Apply'],
+    code_ok: ['Code accepted. No payment needed.', 'Code ঠিক আছে। Payment লাগবে না।'], code_bad: ["That code doesn't match. Check it, or choose Featured guest.", 'Code মিলছে না। আবার দেখুন, অথবা Featured guest বেছে নিন।'],
+    bk_lbl: ['bKash · Send Money', 'bKash · Send Money'], copy: ['Copy', 'Copy'], copied: ['Copied', 'Copied'], bk_amt: ['Amount: ৳10,000', 'পরিমাণ: ৳১০,০০০'],
+    bk_1: ['Open bKash and choose Send Money.', 'bKash app খুলে Send Money বেছে নিন।'],
+    bk_2: ['Send ৳10,000 to the number above (personal number, Send Money only).', 'উপরের নম্বরে ৳১০,০০০ পাঠান (personal নম্বর, শুধু Send Money)।'],
+    bk_3: ['Copy the Transaction ID (TrxID) from the confirmation message.', 'Confirmation message থেকে Transaction ID (TrxID) copy করুন।'],
+    bk_4: ['Enter it below with the number you paid from.', 'নিচে TrxID আর যে নম্বর থেকে পাঠিয়েছেন সেটা লিখুন।'],
+    f_bkfrom: ['Your bKash number', 'আপনার bKash নম্বর'], f_trx: ['Transaction ID (TrxID)', 'Transaction ID (TrxID)'],
+    agree_refund: ["I understand: if I'm not selected or the episode isn't published, ৳8,000 is refunded and ৳2,000 is kept as a processing fee.", 'আমি জানি: নির্বাচিত না হলে বা episode publish না হলে ৳৮,০০০ ফেরত দেওয়া হবে, আর ৳২,০০০ processing fee হিসেবে কাটা যাবে।'],
+    agree_paid: ['I understand the episode will be labelled as a paid feature, and the conversation stays honest and unscripted.', 'আমি জানি episode-টা paid feature হিসেবে উল্লেখ থাকবে, আর আলাপ হবে সৎ ও scripted নয়।'],
+    q_about: ['About you', 'আপনার পরিচয়'], f_name: ['Full name', 'পুরো নাম'],
+    f_intro: ['How should I introduce you? ', 'আপনাকে কীভাবে পরিচয় করাব? '], f_intro_e: ['(one line)', '(এক লাইনে)'], ph_intro: ['e.g. Founder of ABC, doctor, freelancer', 'যেমন: ABC-এর founder, ডাক্তার, freelancer'],
+    f_role: ['Profession / role', 'পেশা / পদবি'], f_org: ['Organization ', 'প্রতিষ্ঠান '], opt: ['(optional)', '(ঐচ্ছিক)'],
+    f_wa: ['WhatsApp number', 'WhatsApp নম্বর'], f_email: ['Email', 'Email'], f_city: ['City, country', 'শহর, দেশ'], ph_city: ['e.g. Sylhet, Bangladesh', 'যেমন: সিলেট, বাংলাদেশ'],
+    f_links: ['Facebook / LinkedIn / website', 'Facebook / LinkedIn / website'],
+    f_bio: ['Short bio ', 'ছোট পরিচিতি '], f_bio_e: ['(3–4 lines, how you got here)', '(৩–৪ লাইনে, এখানে কীভাবে এলেন)'],
+    f_photo: ['Photo link ', 'ছবির link '], f_photo_e: ['(Google Drive or social, for the thumbnail, optional)', '(Google Drive বা social, thumbnail-এর জন্য, ঐচ্ছিক)'],
+    q_story: ['Your story', 'আপনার গল্প'], story_hint: ['These answers become my questions. Real details beat polished answers.', 'এই উত্তরগুলো থেকেই প্রশ্ন হবে। সাজানো উত্তরের চেয়ে সত্যিকারের details বেশি কাজের।'],
+    f_topic: ['What should this episode be about?', 'Episode-টা কী নিয়ে হওয়া উচিত?'], ph_topic: ['e.g. Building a business from Sylhet with no investment', 'যেমন: বিনিয়োগ ছাড়া সিলেট থেকে business গড়া'],
+    f_points: ['3 main points you want to share', 'যে ৩টা মূল কথা বলতে চান'],
+    f_journey: ['Your journey: the hardest moment, and what changed', 'আপনার যাত্রা: সবচেয়ে কঠিন সময়, আর কী বদলে দিল'],
+    f_win: ['Biggest achievement', 'সবচেয়ে বড় অর্জন'], f_fail: ['A failure or lesson', 'একটা ব্যর্থতা বা শিক্ষা'],
+    f_advice: ['One piece of advice for young people in Bangladesh', 'বাংলাদেশের তরুণদের জন্য একটা পরামর্শ'],
+    f_facts: ['Numbers or facts I should know ', 'যে সংখ্যা বা তথ্য আমার জানা দরকার '], ph_facts: ['e.g. years in business, team size, students taught', 'যেমন: কত বছর ধরে business, team-এ কতজন, কতজনকে শিখিয়েছেন'],
+    f_avoid: ["Topics you'd rather not discuss ", 'যে বিষয়ে কথা বলতে চান না '],
+    f_promo: ['Anything you want to promote? ', 'কিছু promote করতে চান? '], ph_promo: ['e.g. your business, course, book', 'যেমন: আপনার business, course, বই'],
+    q_rec: ['Recording', 'Recording'], opt_studio: ['In the studio', 'Studio-তে'], opt_studio_d: ['Location shared after confirmation', 'Confirm হওয়ার পর ঠিকানা জানানো হবে'],
+    opt_online: ['Online', 'Online'], opt_online_d: ['Zoom or similar, from anywhere', 'Zoom বা এরকম কিছু, যেকোনো জায়গা থেকে'],
+    f_d1: ['Preferred date 1', 'পছন্দের তারিখ ১'], f_d2: ['Preferred date 2', 'পছন্দের তারিখ ২'], f_time: ['Best time', 'সুবিধাজনক সময়'],
+    tm_m: ['Morning', 'সকাল'], tm_a: ['Afternoon', 'দুপুর'], tm_e: ['Evening', 'সন্ধ্যা'], tm_f: ['Flexible', 'যেকোনো সময়'],
+    f_lang: ['Language', 'ভাষা'], f_heard: ['How did you hear about the podcast?', 'Podcast-এর কথা কোথা থেকে জানলেন?'],
+    agree_pub: ['I agree that the recording may be edited and published on YouTube, Facebook and other platforms of the Hridoy Hussain Podcast.', 'আমি রাজি যে recording-টা edit করে Hridoy Hussain Podcast-এর YouTube, Facebook আর অন্যান্য platform-এ publish করা হতে পারে।'],
+    q_review: ['Check and send', 'দেখে নিয়ে পাঠান'], review_hint: ['This is what will be sent. Go back to change anything.', 'এটাই পাঠানো হবে। কিছু বদলাতে চাইলে পেছনে যান।'],
+    done_t: ['Application received', 'আবেদন জমা হয়েছে'], done_d: ['One last step: send it to me on WhatsApp so I can reply to you directly.', 'শেষ ধাপ: WhatsApp-এ পাঠিয়ে দিন, যাতে আমি সরাসরি উত্তর দিতে পারি।'],
+    done_wa: ['Send on WhatsApp', 'WhatsApp-এ পাঠান'], back: ['Back', 'পেছনে'], next: ['Next', 'পরের ধাপ'], send: ['Send application', 'আবেদন পাঠান'],
+    step_of: ['Step {n} of 5', 'ধাপ {n} / ৫'],
+    e_type: ['Choose how you are joining.', 'কীভাবে যোগ দিচ্ছেন, বেছে নিন।'], e_code: ['Apply a valid guest code first.', 'আগে সঠিক guest code দিন।'],
+    e_pay: ['Add your bKash number, TrxID, and tick both boxes.', 'bKash নম্বর আর TrxID দিন, আর দুটো box-এ টিক দিন।'],
+    e_req: ['Please fill in the highlighted fields.', 'চিহ্নিত ঘরগুলো পূরণ করুন।'],
+    fs_ok: ['A copy was also saved to my inbox.', 'একটা কপি আমার email-এও জমা হয়েছে।'], fs_fail: ["Email copy couldn't be sent from here, so please use WhatsApp.", 'এখান থেকে email copy যায়নি, তাই WhatsApp-এ পাঠান।'],
+    saved: ['Draft saved on this device', 'এই device-এ draft save হয়েছে'],
+    eps_all: ['All episodes', 'সব episode'], ep_new: ['NEW', 'নতুন'], ep_watch: ['Watch', 'দেখুন'],
+    tp_k: ['What we talk about', 'কী নিয়ে কথা হয়'], tp_t: ['Eight topics. One honest conversation.', 'আটটা বিষয়। একটা সৎ আলাপ।'],
+    tp0: ['Business', 'ব্যবসা'], tq0: ['“How did you get your first customer?”', '“প্রথম customer কীভাবে পেলেন?”'],
+    tp1: ['Career', 'ক্যারিয়ার'], tq1: ['“What would you tell your 22-year-old self?”', '“২২ বছরের নিজেকে কী বলতেন?”'],
+    tp2: ['Money', 'টাকা'], tq2: ['“What did your first big money mistake teach you?”', '“টাকা নিয়ে প্রথম বড় ভুল থেকে কী শিখলেন?”'],
+    tp3: ['Technology', 'প্রযুক্তি'], tq3: ['“Which tool changed the way you work?”', '“কোন tool আপনার কাজের ধরন বদলে দিল?”'],
+    tp4: ['Health', 'স্বাস্থ্য'], tq4: ['“How do you stay well when work gets heavy?”', '“কাজের চাপে নিজেকে কীভাবে ভালো রাখেন?”'],
+    tp5: ['Creativity', 'সৃজনশীলতা'], tq5: ['“Where do your best ideas come from?”', '“সবচেয়ে ভালো আইডিয়াগুলো কোথা থেকে আসে?”'],
+    tp6: ['Freelancing', 'ফ্রিল্যান্সিং'], tq6: ['“How did you land your first international client?”', '“প্রথম বিদেশি client কীভাবে পেলেন?”'],
+    tp7: ['Life stories', 'জীবনের গল্প'], tq7: ['“What moment changed everything?”', '“কোন মুহূর্ত সবকিছু বদলে দিল?”'],
+    faq_t: ['Good questions.', 'আপনার প্রশ্ন।'],
+    host_k: ['Your host', 'আপনার host'], host_note: ['New episodes on YouTube, Facebook, Instagram & TikTok', 'নতুন episode YouTube, Facebook, Instagram ও TikTok-এ'],
+    nav_terms: ['Terms', 'শর্তাবলি'], agree_terms: ['I have read and agree to the', 'আমি পড়েছি এবং সম্মত:'], terms_link: ['guest terms', 'Guest শর্তাবলি'],
+    fq6: ['Who owns the episode, and can I upload it?', 'Episode-এর মালিক কে, আমি কি upload করতে পারব?'],
+    fa6: ["The Podcast owns the recording. You can share it anywhere and upload it to your own pages with credit, as long as you don't monetize it. Details are in the terms.", 'Recording-এর মালিক Podcast। আপনি যেকোনো জায়গায় share করতে পারবেন, আর credit দিয়ে নিজের page-এ upload-ও করতে পারবেন, শুধু তা থেকে আয় করা যাবে না। বিস্তারিত শর্তাবলিতে আছে।'],
+    fq1: ['How do you confirm my bKash payment?', 'bKash payment কীভাবে confirm করেন?'], fa1: ['I check the Transaction ID against my bKash account by hand, then confirm with you on WhatsApp.', 'আমার bKash account-এ TrxID নিজে মিলিয়ে দেখি, তারপর WhatsApp-এ confirm করি।'],
+    fq2: ["What if I'm not selected?", 'নির্বাচিত না হলে কী হবে?'], fa2: ["If your application isn't selected, or the episode isn't published, I refund ৳8,000 to the bKash number you paid from. ৳2,000 is kept as a processing fee.", 'আবেদন নির্বাচিত না হলে বা episode publish না হলে, যে bKash নম্বর থেকে পাঠিয়েছেন সেখানে ৳৮,০০০ ফেরত দিই। ৳২,০০০ processing fee হিসেবে থাকে।'],
+    fq3: ['Will I see the questions before the shoot?', 'Shoot-এর আগে কি প্রশ্নগুলো দেখতে পাব?'], fa3: ["I share the main topics before we record. The exact questions stay natural, so the conversation feels real. Topics you listed as off-limits won't come up.", 'Record-এর আগে মূল topic-গুলো জানিয়ে দিই। হুবহু প্রশ্ন আগে দিই না, যাতে আলাপটা স্বাভাবিক থাকে। যে বিষয়ে কথা বলতে চান না বলেছেন, সেগুলো আসবে না।'],
+    fq4: ['Does paying guarantee a positive or scripted episode?', 'টাকা দিলে কি সব positive বা scripted হবে?'], fa4: ['No. Paying covers the feature and the production. The conversation stays honest, and the episode is labelled as a paid feature on YouTube.', 'না। টাকা দিয়ে feature আর production-এর খরচ দেন। আলাপ সৎ থাকে, আর YouTube-এ episode-টা paid feature হিসেবে উল্লেখ থাকে।'],
+    fq5: ['Studio or online, which is better?', 'Studio না online, কোনটা ভালো?'], fa5: ["Both work. The studio gives the best picture and sound. Online is easier if you're outside the city or abroad.", 'দুটোই চলে। Studio-তে ছবি আর sound সবচেয়ে ভালো আসে। শহরের বাইরে বা বিদেশে থাকলে online সহজ।']
+  };
+  var lang = 'bn';
+  try { var s = localStorage.getItem('hhp-lang'); if (s === 'en' || s === 'bn') lang = s; } catch (e) {}
+  function t(k) { var v = T[k]; return v ? v[lang === 'en' ? 0 : 1] : ''; }
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-t]').forEach(function (el) { var v = T[el.dataset.t]; if (v) el.textContent = v[l === 'en' ? 0 : 1]; });
+    document.querySelectorAll('[data-tp]').forEach(function (el) { var v = T[el.dataset.tp]; if (v) el.placeholder = v[l === 'en' ? 0 : 1]; });
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    render();
+    if (typeof renderEps === 'function') renderEps();
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { try { localStorage.setItem('hhp-lang', b.dataset.lang); } catch (e) {} setLang(b.dataset.lang); });
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var tc = document.getElementById('tc'), t0 = Date.now();
+  if (tc && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(function () {
+    var s = Math.floor((Date.now() - t0) / 1000) + 2537, p = function (n) { return (n < 10 ? '0' : '') + n; };
+    tc.textContent = p(Math.floor(s / 3600)) + ':' + p(Math.floor(s / 60) % 60) + ':' + p(s % 60);
+  }, 1000);
+
+
+  /* ---------- Episodes: built from episodes.json (kept fresh by a GitHub Action) ---------- */
+  var epsData = null;
+  function renderEps() {
+    if (!epsData || !epsData.items || !epsData.items.length) return;
+    var box = document.getElementById('eps');
+    box.textContent = '';
+    var list = epsData.items.slice(0, epsData.items.length >= 6 ? 6 : 3);
+    list.forEach(function (v, i) {
+      var a = document.createElement('a');
+      a.className = 'ep'; a.href = v.url; a.target = '_blank'; a.rel = 'noopener';
+      var d = new Date(v.published);
+      var fresh = Date.now() - d.getTime() < 14 * 864e5;
+      var date = isNaN(d) ? '' : d.toLocaleDateString(lang === 'en' ? 'en-GB' : 'bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+      var th = document.createElement('span'); th.className = 'thumb';
+      var img = document.createElement('img'); img.src = v.thumb; img.alt = ''; img.loading = i ? 'lazy' : 'eager'; img.width = 1280; img.height = 720;
+      img.onerror = function () { img.remove(); };
+      th.appendChild(img);
+      var play = document.createElement('b'); play.setAttribute('aria-hidden', 'true'); play.textContent = '▶'; th.appendChild(play);
+      if (i === 0 && fresh) { var n = document.createElement('span'); n.className = 'new'; n.textContent = t('ep_new'); th.appendChild(n); }
+      var meta = document.createElement('span'); meta.className = 'mono'; meta.textContent = date;
+      var h = document.createElement('h3'); h.lang = 'bn'; h.textContent = v.title;
+      a.appendChild(th); a.appendChild(meta); a.appendChild(h);
+      box.appendChild(a);
+    });
+  }
+  fetch('episodes.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { epsData = d; renderEps(); }).catch(function () {});
+
+  /* ---------- Wizard ---------- */
+  var form = document.getElementById('wiz');
+  var panes = form.querySelectorAll('.pane');
+  var bars = form.querySelectorAll('.bar span');
+  var back = document.getElementById('back'), next = document.getElementById('next');
+  var err = document.getElementById('err');
+  var step = 0, codeOk = false;
+
+  function render() {
+    panes.forEach(function (p, i) { p.classList.toggle('on', i === step); });
+    bars.forEach(function (b, i) { b.classList.toggle('on', i <= step); });
+    document.getElementById('stepLabel').textContent = t('step_of').replace('{n}', lang === 'en' ? step + 1 : '১২৩৪৫'[step]);
+    document.getElementById('stepTitle').textContent = t(panes[step].dataset.title);
+    back.disabled = step === 0;
+    next.querySelector('span').textContent = step === panes.length - 1 ? t('send') : t('next');
+    if (step === panes.length - 1) document.getElementById('review').textContent = summary();
+  }
+  function type() { var r = form.querySelector('input[name="guest_type"]:checked'); return r ? r.value : ''; }
+  function showType() {
+    document.getElementById('box-inv').hidden = type() !== 'invited';
+    document.getElementById('box-paid').hidden = type() !== 'paid';
+  }
+  form.addEventListener('change', function (e) { if (e.target.name === 'guest_type') showType(); saveDraft(); });
+  form.addEventListener('input', function () { saveDraft(); });
+
+  document.querySelectorAll('[data-pick]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.getElementById(a.dataset.pick === 'paid' ? 'gt-paid' : 'gt-inv').checked = true;
+      step = 0; showType(); render();
+    });
+  });
+
+  function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16); }
+  document.getElementById('applyCode').addEventListener('click', function () {
+    var v = document.getElementById('code').value.trim().toUpperCase();
+    codeOk = fnv(v) === CODE_HASH;
+    var m = document.getElementById('codeMsg');
+    m.className = 'msg ' + (codeOk ? 'ok' : 'err');
+    m.textContent = codeOk ? t('code_ok') : t('code_bad');
+  });
+
+  document.getElementById('copyBk').addEventListener('click', function () {
+    var b = this;
+    try { navigator.clipboard.writeText('01751210179').then(function () { b.textContent = t('copied'); setTimeout(function () { b.textContent = t('copy'); }, 1500); }, sel); } catch (e) { sel(); }
+    function sel() { var r = document.createRange(); r.selectNodeContents(document.getElementById('bkNum')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+
+  function fail(msg, els) {
+    err.hidden = false; err.textContent = msg;
+    (els || []).forEach(function (el) { el.closest('.fld') && el.closest('.fld').classList.add('bad'); });
+    if (els && els[0]) els[0].focus();
+    return false;
+  }
+  function validate() {
+    err.hidden = true;
+    form.querySelectorAll('.fld.bad').forEach(function (f) { f.classList.remove('bad'); });
+    if (step === 0) {
+      if (!type()) return fail(t('e_type'));
+      if (type() === 'invited' && !codeOk) return fail(t('e_code'), [document.getElementById('code')]);
+      if (type() === 'paid') {
+        var from = document.getElementById('bk_from'), trx = document.getElementById('bk_trx');
+        var bad = [];
+        if (!/^01[3-9]\d{8}$/.test(from.value.replace(/\D/g, '').replace(/^880/, '0'))) bad.push(from);
+        if (trx.value.trim().length < 8) bad.push(trx);
+        if (bad.length || !document.getElementById('agreeRefund').checked || !document.getElementById('agreePaid').checked) return fail(t('e_pay'), bad);
+      }
+      return true;
+    }
+    var missing = [];
+    panes[step].querySelectorAll('[required]').forEach(function (el) {
+      if (el.type === 'checkbox' ? !el.checked : !el.value.trim() || (el.type === 'email' && !el.checkValidity())) missing.push(el);
+    });
+    if (missing.length) return fail(t('e_req'), missing.filter(function (el) { return el.type !== 'checkbox'; }));
+    return true;
+  }
+
+  back.addEventListener('click', function () { if (step > 0) { step--; err.hidden = true; render(); scrollTop(); } });
+  next.addEventListener('click', function () {
+    if (!validate()) return;
+    if (step < panes.length - 1) { step++; render(); scrollTop(); } else submit();
+  });
+  function scrollTop() { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+  var LABELS = { guest_type: 'Guest type', guest_code: 'Guest code', bkash_from: 'bKash from', bkash_trxid: 'bKash TrxID', full_name: 'Name', intro_line: 'Intro', role: 'Role', organization: 'Organization', whatsapp: 'WhatsApp', email: 'Email', location: 'Location', links: 'Links', bio: 'Bio', photo_link: 'Photo', episode_topic: 'Episode topic', key_points: 'Key points', journey: 'Journey', achievement: 'Achievement', lesson: 'Lesson', advice: 'Advice', facts: 'Facts', avoid_topics: 'Avoid', promotion: 'Promote', format: 'Format', date_1: 'Date 1', date_2: 'Date 2', time_slot: 'Time', language: 'Language', heard_from: 'Heard from' };
+  function summary() {
+    var fd = new FormData(form), out = ['NEW PODCAST GUEST APPLICATION', ''];
+    Object.keys(LABELS).forEach(function (k) {
+      var v = (fd.get(k) || '').toString().trim();
+      if (!v) return;
+      if (k === 'guest_type') v = v === 'paid' ? 'Featured (paid ৳10,000)' : 'Invited (code)';
+      if ((k === 'guest_code' && type() !== 'invited') || ((k === 'bkash_from' || k === 'bkash_trxid') && type() !== 'paid')) return;
+      out.push(LABELS[k] + ': ' + (k === 'bkash_trxid' || k === 'guest_code' ? v.toUpperCase() : v));
+    });
+    return out.join('\n');
+  }
+
+  function submit() {
+    var text = summary();
+    next.disabled = true;
+    var note = document.getElementById('fsNote');
+    var fd = new FormData(form);
+    fd.set('application_summary', text);
+    fetch(FORMSPREE, { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
+      .then(function (r) { note.textContent = r.ok ? t('fs_ok') : t('fs_fail'); })
+      .catch(function () { note.textContent = t('fs_fail'); })
+      .finally(function () { next.disabled = false; });
+    document.getElementById('waLink').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+    panes.forEach(function (p) { p.classList.remove('on'); });
+    document.getElementById('navBtns').hidden = true;
+    form.querySelector('.bar').hidden = true;
+    form.querySelector('.stepname').hidden = true;
+    document.getElementById('done').classList.add('on');
+    try { localStorage.removeItem('hhp-draft'); } catch (e) {}
+    scrollTop();
+  }
+
+  /* ---------- Draft saved on this device (not payment details) ---------- */
+  var savedEl = document.getElementById('saved'), saveT;
+  function saveDraft() {
+    clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      var data = {};
+      new FormData(form).forEach(function (v, k) { if (k.charAt(0) !== '_' && k.indexOf('bkash') !== 0 && k !== 'guest_code') data[k] = v; });
+      try { localStorage.setItem('hhp-draft', JSON.stringify(data)); savedEl.textContent = t('saved'); } catch (e) {}
+    }, 500);
+  }
+  try {
+    var d = JSON.parse(localStorage.getItem('hhp-draft') || 'null');
+    if (d) Object.keys(d).forEach(function (k) {
+      var els = form.querySelectorAll('[name="' + k + '"]');
+      els.forEach(function (el) { if (el.type === 'radio' || el.type === 'checkbox') el.checked = el.value === d[k]; else el.value = d[k]; });
+    });
+  } catch (e) {}
+  showType();
+  setLang(lang);
+})();
+</script>
+</body>
+</html>

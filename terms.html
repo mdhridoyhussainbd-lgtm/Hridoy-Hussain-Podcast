@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Guest Terms | Hridoy Hussain Podcast</title>
+<meta name="description" content="Terms for guests of the Hridoy Hussain Podcast: recording, publishing, sharing, copyright, payment and refunds.">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root { --paper: #FFFFFF; --paper-2: #F3F3F3; --ink: #0E0E0E; --ink-2: #1B1B1B; --grey: #6B6B6B; --rule: #D9D9D9;
+  --font: "Montserrat", "Hind Siliguri", "Segoe UI", Arial, sans-serif; --bn: "Hind Siliguri", "Montserrat", sans-serif; --mono: "JetBrains Mono", ui-monospace, Consolas, monospace; color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.04rem/1.8 var(--font); -webkit-font-smoothing: antialiased; }
+html[lang="bn"] body { font-family: var(--bn); font-size: 1.08rem; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+html[lang="bn"] .en, html[lang="en"] .bn { display: none !important; }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(255,255,255,.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+.top > div { max-width: 60rem; margin: 0 auto; padding: .75rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.top a.home { text-decoration: none; font: 800 .74rem/1.2 Montserrat, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.lang { display: flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
+.lang button { border: 0; background: none; font: 600 .75rem/1 Montserrat, sans-serif; padding: .45rem .7rem; border-radius: 999px; cursor: pointer; color: var(--grey); }
+.lang button[lang="bn"] { font-family: var(--bn); font-size: .85rem; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.page { max-width: 60rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 1.25rem 4rem; display: grid; grid-template-columns: 13rem 1fr; gap: 3rem; }
+.toc { position: sticky; top: 5rem; align-self: start; display: grid; gap: .35rem; font-size: .85rem; }
+.toc a { text-decoration: none; color: var(--grey); }
+.toc a:hover { color: var(--ink); }
+.meta { font-family: var(--mono); font-size: .75rem; color: var(--grey); }
+html[lang="bn"] .meta { font-family: var(--bn); font-size: .88rem; }
+h1 { font: 900 clamp(2.2rem, 1.4rem + 3vw, 3.6rem)/1.02 Montserrat, sans-serif; letter-spacing: -.04em; margin: .8rem 0 1.2rem; }
+html[lang="bn"] h1 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; line-height: 1.2; }
+.lead { font-size: 1.15rem; color: var(--ink-2); margin: 0; }
+.deal { margin: 2rem 0 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.deal div { border: 1px solid var(--rule); border-radius: 16px; padding: 1.1rem 1.2rem; }
+.deal b { display: block; margin-bottom: .4rem; }
+.deal ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .95rem; }
+section { border-top: 1px solid var(--rule); padding-top: 1.6rem; margin-top: 2.4rem; }
+h2 { font: 800 1.35rem/1.3 Montserrat, sans-serif; letter-spacing: -.02em; margin: 0 0 .8rem; display: flex; gap: .8rem; align-items: baseline; }
+html[lang="bn"] h2 { font-family: var(--bn); font-weight: 700; letter-spacing: 0; }
+h2 .n { font: 400 .8rem var(--mono); color: var(--grey); }
+.brief { background: var(--paper-2); border-radius: 14px; padding: .9rem 1.1rem; margin: 0 0 1rem; font-size: .98rem; }
+.brief::before { content: attr(data-l); display: block; font: 600 .7rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--grey); margin-bottom: .2rem; }
+html[lang="bn"] .brief::before { font-family: var(--bn); font-size: .82rem; letter-spacing: 0; text-transform: none; }
+ol, ul { padding-left: 1.2rem; }
+li { margin: .4rem 0; color: var(--ink-2); }
+p { color: var(--ink-2); }
+.note { margin-top: 3rem; padding: 1.2rem 1.4rem; border: 1px dashed var(--rule); border-radius: 14px; font-size: .9rem; color: var(--grey); }
+.cta { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.btn { display: inline-flex; align-items: center; gap: .8rem; padding: .55rem .55rem .55rem 1.3rem; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; }
+.btn i { width: 2rem; height: 2rem; border-radius: 50%; background: var(--paper); color: var(--ink); display: grid; place-items: center; font-style: normal; }
+@media (max-width: 820px) { .page { grid-template-columns: 1fr; } .toc { display: none; } .deal { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="top"><div>
+  <a class="home" href="index.html">← Hridoy Hussain Podcast</a>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="bn" lang="bn" aria-pressed="true">বাংলা</button><button type="button" data-lang="en" aria-pressed="false">English</button></div>
+</div></header>
+
+<div class="page">
+  <nav class="toc" aria-label="Sections">
+    <a href="#s1"><span class="bn">১. Recording</span><span class="en">1. Recording</span></a>
+    <a href="#s2"><span class="bn">২. Publish ও Live</span><span class="en">2. Publishing & live</span></a>
+    <a href="#s3"><span class="bn">৩. Share করা</span><span class="en">3. Sharing</span></a>
+    <a href="#s4"><span class="bn">৪. Copyright</span><span class="en">4. Copyright</span></a>
+    <a href="#s5"><span class="bn">৫. আয় ও collab</span><span class="en">5. Revenue & collabs</span></a>
+    <a href="#s6"><span class="bn">৬. Payment ও refund</span><span class="en">6. Payment & refunds</span></a>
+    <a href="#s7"><span class="bn">৭. Schedule</span><span class="en">7. Scheduling</span></a>
+    <a href="#s8"><span class="bn">৮. আপনার কথা</span><span class="en">8. What you say</span></a>
+    <a href="#s9"><span class="bn">৯. সরিয়ে ফেলা</span><span class="en">9. Removal</span></a>
+    <a href="#s10"><span class="bn">১০. তথ্য ও গোপনীয়তা</span><span class="en">10. Privacy</span></a>
+    <a href="#s11"><span class="bn">১১. অন্যান্য</span><span class="en">11. General</span></a>
+  </nav>
+
+  <main>
+    <p class="meta"><span class="bn">কার্যকর: ১৯ অক্টোবর ২০২৬</span><span class="en">Effective: 19 October 2026</span></p>
+    <h1><span class="bn">Guest-দের জন্য শর্তাবলি</span><span class="en">Guest terms</span></h1>
+    <p class="lead bn">Podcast-এ আসার আগে সবকিছু পরিষ্কার থাকলে পরে কোনো ভুল বোঝাবুঝি হয় না। তাই সহজ ভাষায় লিখেছি। প্রতিটা অংশের শুরুতে "সংক্ষেপে" পড়লেই মূল কথা বুঝবেন।</p>
+    <p class="lead en">Clear expectations before the shoot mean no surprises later. Each section starts with a one-line summary, so you can get the gist in a minute.</p>
+
+    <div class="deal">
+      <div><b class="bn">আপনি যা পাচ্ছেন</b><b class="en">What you get</b>
+        <ul class="bn"><li>Professional ভাবে record ও edit করা episode</li><li>Facebook, Instagram, YouTube ও TikTok-এ প্রচার</li><li>নিজের page-এ share ও upload করার অনুমতি</li><li>আপনার ব্যবসা ও আইডিয়া আপনারই থাকবে</li></ul>
+        <ul class="en"><li>A professionally recorded and edited episode</li><li>Promotion on Facebook, Instagram, YouTube and TikTok</li><li>Permission to share and upload it on your own pages</li><li>Your business and ideas stay yours</li></ul></div>
+      <div><b class="bn">Podcast যা রাখছে</b><b class="en">What the podcast keeps</b>
+        <ul class="bn"><li>Recording-এর copyright</li><li>Edit, title ও কোথায় publish হবে সেই সিদ্ধান্ত</li><li>Platform থেকে আসা আয়</li><li>Live করার সিদ্ধান্ত</li></ul>
+        <ul class="en"><li>Copyright in the recording</li><li>Decisions on editing, titles and where it's published</li><li>Platform revenue</li><li>The choice to stream live</li></ul></div>
+    </div>
+
+    <section id="s1">
+      <h2><span class="n">01</span><span class="bn">Recording</span><span class="en">Recording</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">আমি record করি, আর কীভাবে edit হবে সেটা আমি ঠিক করি।</p>
+      <p class="brief en" data-l="In short">I record the conversation and decide how it's edited.</p>
+      <ol class="bn"><li>Episode Hridoy Hussain Podcast ("Podcast") studio-তে বা online-এ record করবে।</li><li>Edit, cut, ছোট clip, title, thumbnail ও description তৈরির সিদ্ধান্ত Podcast-এর। Final edit আগে দেখানো বা অনুমোদন নেওয়ার বাধ্যবাধকতা নেই।</li><li>পুরো আলাপ অপরিবর্তিত থাকবে এমন নিশ্চয়তা নেই। তবে আপনার কথার অর্থ বিকৃত করে edit করা হবে না।</li></ol>
+      <ol class="en"><li>The Hridoy Hussain Podcast ("the Podcast") records the episode in the studio or online.</li><li>The Podcast decides on editing, cuts, short clips, titles, thumbnails and descriptions. There's no obligation to show you the final edit or get your approval first.</li><li>The full conversation may not appear unedited, but your words will never be edited to change their meaning.</li></ol>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">02</span><span class="bn">Publish ও Live</span><span class="en">Publishing and live streaming</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">Episode আমার Facebook, Instagram, YouTube ও TikTok-এ যাবে। চাইলে live-ও করতে পারি।</p>
+      <p class="brief en" data-l="In short">Episodes go out on my Facebook, Instagram, YouTube and TikTok. I may also stream live.</p>
+      <ol class="bn"><li>Podcast episode ও তার clip Facebook, Instagram, YouTube, TikTok এবং Podcast-এর ভবিষ্যৎ যেকোনো platform-এ publish করতে পারবে।</li><li>Podcast চাইলে recording-এর সময় একই আলাপ live stream করতে পারবে। Live হবে কিনা সেটা Podcast-এর সিদ্ধান্ত, এবং live-এর আগে আপনাকে জানানো হবে। Live-এ বলা কথা তাৎক্ষণিক প্রচারিত হয়, তাই পরে edit করা যায় না।</li><li>কবে publish হবে, সেই সময় Podcast ঠিক করবে।</li><li>Podcast কোনো episode publish না করার সিদ্ধান্তও নিতে পারে। Paid guest-এর ক্ষেত্রে তখন ৬ নম্বর অংশের refund প্রযোজ্য।</li></ol>
+      <ol class="en"><li>The Podcast may publish the episode and clips on Facebook, Instagram, YouTube, TikTok and any platform it uses in the future.</li><li>The Podcast may stream the conversation live while recording. Whether to go live is the Podcast's decision, and you'll be told beforehand. Live content can't be edited afterwards.</li><li>The Podcast decides the publishing date.</li><li>The Podcast may decide not to publish an episode. For paid guests, the refund in section 6 then applies.</li></ol>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">03</span><span class="bn">আপনি কীভাবে share করবেন</span><span class="en">How you can share it</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">যত খুশি share করুন, নিজের page-এ upload-ও করুন। শুধু credit দেবেন, আর এটা থেকে আয় করবেন না।</p>
+      <p class="brief en" data-l="In short">Share it as much as you like, and upload it to your own pages too. Just give credit and don't earn money from it.</p>
+      <ol class="bn"><li>Podcast-এর page থেকে episode বা clip যেকোনো জায়গায় share করতে পারবেন।</li><li>নিজের Facebook, Instagram, YouTube, TikTok বা website-এ পুরো episode বা clip upload করতে পারবেন, এই শর্তে:<ul><li>Caption বা description-এ "Hridoy Hussain Podcast" উল্লেখ বা tag থাকবে</li><li>Podcast-এর logo, intro বা watermark সরানো যাবে না</li><li>Video কেটে বা বদলে অন্য অর্থ তৈরি করা যাবে না</li><li>আপনার upload থেকে ad revenue বা monetization চালু করা যাবে না</li><li>বিজ্ঞাপন (paid ad) হিসেবে চালাতে চাইলে আগে লিখিত অনুমতি নিতে হবে</li></ul></li><li>অন্য কোনো channel বা ব্যক্তিকে re-upload করার অনুমতি দিতে পারবেন না।</li></ol>
+      <ol class="en"><li>You can share episodes and clips from the Podcast's pages anywhere.</li><li>You can upload the full episode or clips to your own Facebook, Instagram, YouTube, TikTok or website, as long as you:<ul><li>credit or tag "Hridoy Hussain Podcast" in the caption or description</li><li>keep the Podcast's logo, intro and watermark</li><li>don't cut or change the video to create a different meaning</li><li>don't monetize your upload or earn ad revenue from it</li><li>get written permission first if you want to run it as a paid ad</li></ul></li><li>You can't give anyone else permission to re-upload it.</li></ol>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">04</span><span class="bn">Copyright</span><span class="en">Copyright</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">Recording-এর মালিক Podcast। আপনার ব্যবসা, নাম আর আইডিয়ার মালিক আপনি।</p>
+      <p class="brief en" data-l="In short">The Podcast owns the recording. You own your business, name and ideas.</p>
+      <ol class="bn"><li>Episode-এর video, audio, clip, ছবি, thumbnail, title ও সব edit-এর পূর্ণ copyright Hridoy Hussain Podcast-এর।</li><li>Podcast-কে আপনি episode-এ ও তার প্রচারে আপনার নাম, ছবি, কণ্ঠ, পরিচিতি এবং (দিলে) আপনার প্রতিষ্ঠানের নাম ও logo ব্যবহারের অনুমতি দিচ্ছেন। এই অনুমতি বিশ্বব্যাপী, স্থায়ী এবং বিনামূল্যে।</li><li>আপনার ব্যবসা, পণ্য, trademark, বই, course ও আইডিয়ার মালিকানা আপনারই থাকবে। Podcast সেগুলোর উপর কোনো দাবি করবে না।</li><li>আপনি নিশ্চিত করছেন যে recording-এ আপনি যা দেখাবেন (ছবি, slide, video, music) তা ব্যবহারের অধিকার আপনার আছে।</li></ol>
+      <ol class="en"><li>The Hridoy Hussain Podcast owns the full copyright in the episode's video, audio, clips, images, thumbnails, titles and edits.</li><li>You give the Podcast a worldwide, permanent, free permission to use your name, image, voice, bio and (if you provide them) your organization's name and logo in the episode and its promotion.</li><li>Your business, products, trademarks, books, courses and ideas remain yours. The Podcast claims no ownership of them.</li><li>You confirm you have the right to use anything you show during the recording (images, slides, video, music).</li></ol>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">05</span><span class="bn">আয় ও collaboration</span><span class="en">Revenue and collaborations</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">Episode থেকে আসা আয় Podcast-এর। বড় collaboration হলে আলাদা চুক্তিতে কথা বলব।</p>
+      <p class="brief en" data-l="In short">Revenue from episodes goes to the Podcast. Bigger collaborations are discussed in a separate agreement.</p>
+      <ol class="bn"><li>Episode থেকে আসা ad revenue, sponsorship ও platform-এর সব আয় Podcast-এর। Guest কোনো revenue share পাবেন না, যদি না আলাদা লিখিত চুক্তি হয়।</li><li>Guest বা তার প্রতিষ্ঠানের audience বড় হলে Podcast চাইলে collab post, revenue share বা যৌথ প্রচার নিয়ে আলোচনা করতে পারে। এটা সম্পূর্ণ Podcast-এর ইচ্ছাধীন, এবং লিখিত চুক্তি ছাড়া বাধ্যতামূলক নয়।</li><li>Instagram বা অন্য platform-এর "collab" post Podcast-এর সিদ্ধান্তে হবে।</li></ol>
+      <ol class="en"><li>All ad revenue, sponsorships and platform income from episodes belong to the Podcast. Guests receive no revenue share unless agreed separately in writing.</li><li>For guests with a large audience, the Podcast may choose to discuss collab posts, revenue sharing or joint promotion. This is entirely at the Podcast's discretion and isn't binding without a written agreement.</li><li>Instagram or other "collab" posts are at the Podcast's discretion.</li></ol>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">06</span><span class="bn">Payment ও refund (Featured guest)</span><span class="en">Payment and refunds (featured guests)</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">Featured guest ৳১০,০০০ দেন। নির্বাচিত না হলে বা publish না হলে ৳৮,০০০ ফেরত পান।</p>
+      <p class="brief en" data-l="In short">Featured guests pay ৳10,000. If not selected or not published, ৳8,000 is refunded.</p>
+      <ol class="bn"><li>Featured guest-এর fee ৳১০,০০০, bKash Send Money-তে <b>01751210179</b> নম্বরে। TrxID মিলিয়ে দেখার পর আবেদন confirm করা হয়।</li><li>আমন্ত্রিত guest (guest code সহ) কোনো fee দেন না।</li><li>আবেদন নির্বাচিত না হলে, বা Podcast-এর কারণে episode publish না হলে, ৳৮,০০০ যে bKash নম্বর থেকে পাঠানো হয়েছিল সেখানে ফেরত দেওয়া হবে। ৳২,০০০ processing fee হিসেবে কাটা যাবে।</li><li>Recording-এর অন্তত ৪৮ ঘণ্টা আগে guest নিজে বাতিল করলে ৳৮,০০০ ফেরত দেওয়া হবে।</li><li>৪৮ ঘণ্টার কম সময় আগে বাতিল করলে, বা না জানিয়ে না এলে, টাকা ফেরত দেওয়া হবে না। তবে একবার নতুন তারিখ নেওয়া যাবে।</li><li>Fee দিয়ে আপনি feature ও production-এর খরচ দিচ্ছেন। এতে আলাপের বিষয়বস্তু, edit বা প্রশংসামূলক উপস্থাপনা নিয়ন্ত্রণ করা যায় না। Paid episode YouTube ও অন্যান্য platform-এ "paid promotion" হিসেবে চিহ্নিত থাকবে।</li></ol>
+      <ol class="en"><li>The featured guest fee is ৳10,000, paid by bKash Send Money to <b>01751210179</b>. Applications are confirmed once the TrxID is checked.</li><li>Invited guests (with a guest code) pay nothing.</li><li>If an application isn't selected, or the episode isn't published for reasons on the Podcast's side, ৳8,000 is refunded to the bKash number it came from. ৳2,000 is kept as a processing fee.</li><li>If you cancel at least 48 hours before recording, ৳8,000 is refunded.</li><li>If you cancel with less than 48 hours' notice, or don't show up, there's no refund, but you can reschedule once.</li><li>The fee covers the feature and production. It doesn't buy control over the conversation, the edit or favourable coverage. Paid episodes are labelled as paid promotion on YouTube and other platforms.</li></ol>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">07</span><span class="bn">Schedule ও প্রস্তুতি</span><span class="en">Scheduling and preparation</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">তারিখ দুজনে মিলে ঠিক করি। Shoot-এর আগে মূল topic জানিয়ে দিই।</p>
+      <p class="brief en" data-l="In short">We agree the date together. I share the main topics before the shoot.</p>
+      <ol class="bn"><li>Recording-এর তারিখ ও সময় দুই পক্ষ মিলে ঠিক করা হবে। Studio-র ঠিকানা confirm হওয়ার পর জানানো হবে।</li><li>Shoot-এর আগে মূল topic জানানো হবে। হুবহু প্রশ্ন আগে দেওয়া হবে না, যাতে আলাপ স্বাভাবিক থাকে।</li><li>যে বিষয়ে কথা বলতে চান না বলে জানাবেন, সেগুলো এড়িয়ে চলা হবে।</li><li>অনিবার্য কারণে Podcast তারিখ বদলাতে পারে। সেক্ষেত্রে আপনার সুবিধামতো নতুন তারিখ দেওয়া হবে।</li></ol>
+      <ol class="en"><li>Recording date and time are agreed by both sides. The studio address is shared after confirmation.</li><li>Main topics are shared before the shoot. Exact questions aren't, so the conversation stays natural.</li><li>Topics you ask to avoid will be avoided.</li><li>If the Podcast has to reschedule for unavoidable reasons, you'll be offered a new date that suits you.</li></ol>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">08</span><span class="bn">আপনার কথার দায়িত্ব</span><span class="en">What you say</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">আপনার মতামত আপনার নিজের। সত্য বলুন, কাউকে আঘাত বা অপমান করবেন না।</p>
+      <p class="brief en" data-l="In short">Your views are your own. Be truthful, and don't attack or insult anyone.</p>
+      <ol class="bn"><li>Episode-এ guest-এর মতামত guest-এর নিজের, Podcast-এর নয়।</li><li>আবেদনে ও আলাপে দেওয়া তথ্য সত্য হতে হবে।</li><li>বেআইনি, ঘৃণামূলক, মানহানিকর বা কারও গোপনীয়তা লঙ্ঘনকারী কথা বলা যাবে না। স্বাস্থ্য, আর্থিক বা আইনি বিষয়ে আপনার দাবির দায়িত্ব আপনার।</li><li>Podcast এ ধরনের অংশ edit করে বাদ দিতে বা পুরো episode প্রকাশ না করার সিদ্ধান্ত নিতে পারে।</li></ol>
+      <ol class="en"><li>Views expressed by guests are their own, not the Podcast's.</li><li>Information in your application and the conversation must be true.</li><li>Don't say anything illegal, hateful, defamatory or that breaks someone's privacy. You're responsible for your own health, financial or legal claims.</li><li>The Podcast may edit out such parts, or decide not to publish the episode.</li></ol>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">09</span><span class="bn">Publish-এর পর সরিয়ে ফেলা</span><span class="en">Removal after publishing</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">Publish হওয়া episode সাধারণত থেকে যায়। গুরুতর কারণ থাকলে জানাবেন, বিবেচনা করব।</p>
+      <p class="brief en" data-l="In short">Published episodes usually stay up. If there's a serious reason, tell me and I'll consider it.</p>
+      <ol class="bn"><li>Publish হওয়া episode সরানোর বাধ্যবাধকতা Podcast-এর নেই।</li><li>নিরাপত্তা বা আইনি কারণে কোনো অংশ সরানোর অনুরোধ করলে Podcast তা বিবেচনা করবে। চূড়ান্ত সিদ্ধান্ত Podcast-এর।</li><li>Episode সরানো হলে কোনো fee ফেরত দেওয়া হবে না।</li></ol>
+      <ol class="en"><li>The Podcast has no obligation to remove a published episode.</li><li>Requests to remove parts for safety or legal reasons will be considered. The final decision is the Podcast's.</li><li>Removing a published episode doesn't make the fee refundable.</li></ol>
+    </section>
+
+    <section id="s10">
+      <h2><span class="n">10</span><span class="bn">আপনার তথ্য</span><span class="en">Your information</span></h2>
+      <p class="brief bn" data-l="সংক্ষেপে">আপনার তথ্য শুধু episode প্রস্তুতি আর যোগাযোগের জন্য ব্যবহার হয়। বিক্রি হয় না।</p>
+      <p class="brief en" data-l="In short">Your details are used only to prepare the episode and contact you. They're never sold.</p>
+      <ol class="bn"><li>আবেদনের তথ্য episode প্রস্তুতি, যোগাযোগ ও payment যাচাইয়ের জন্য ব্যবহার হবে।</li><li>আপনার phone নম্বর, email বা bKash তথ্য প্রকাশ বা বিক্রি করা হবে না।</li><li>আবেদন email (Formspree) ও WhatsApp-এর মাধ্যমে Podcast-এর কাছে পৌঁছায়।</li></ol>
+      <ol class="en"><li>Application details are used to prepare the episode, contact you and check payment.</li><li>Your phone number, email and bKash details are never published or sold.</li><li>Applications reach the Podcast by email (through Formspree) and WhatsApp.</li></ol>
+    </section>
+
+    <section id="s11">
+      <h2><span class="n">11</span><span class="bn">অন্যান্য</span><span class="en">General</span></h2>
+      <ol class="bn"><li>আবেদন জমা দিলে আপনি এই শর্তাবলিতে সম্মত হচ্ছেন।</li><li>Podcast এই শর্তাবলি হালনাগাদ করতে পারে। আবেদনের সময়ের সংস্করণ সেই episode-এর জন্য প্রযোজ্য থাকবে।</li><li>এই শর্তাবলি বাংলাদেশের আইন অনুযায়ী পরিচালিত হবে।</li><li>বাংলা ও English সংস্করণে অমিল হলে বাংলা সংস্করণ প্রাধান্য পাবে।</li><li>প্রশ্ন থাকলে WhatsApp করুন: +880 1302-778420</li></ol>
+      <ol class="en"><li>By submitting an application you agree to these terms.</li><li>The Podcast may update these terms. The version in force when you applied applies to your episode.</li><li>These terms are governed by the laws of Bangladesh.</li><li>If the Bangla and English versions differ, the Bangla version prevails.</li><li>Questions? WhatsApp +880 1302-778420.</li></ol>
+    </section>
+
+    <div class="cta"><a class="btn" href="index.html#apply"><span class="bn">Guest হতে আবেদন করুন</span><span class="en">Apply to be a guest</span> <i aria-hidden="true">→</i></a></div>
+  </main>
+</div>
+
+<script>
+(function () {
+  var l = 'bn';
+  try { var s = localStorage.getItem('hhp-lang'); if (s === 'en' || s === 'bn') l = s; } catch (e) {}
+  function set(x) {
+    document.documentElement.lang = x;
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === x)); });
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { try { localStorage.setItem('hhp-lang', b.dataset.lang); } catch (e) {} set(b.dataset.lang); });
+  });
+  set(l);
+})();
+</script>
+</body>
+</html>
